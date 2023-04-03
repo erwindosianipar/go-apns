@@ -34,7 +34,8 @@ func main() {
 	notification := &apns2.Notification{}
 	notification.DeviceToken = viper.GetString("DEVICE_TOKEN")
 	notification.Topic = viper.GetString("BUNDLE_ID")
-	notification.Payload = []byte(`{"aps":{"alert":{"body":"Lorem ipsum dolor sit amet consectetur adipiscing elit"},"badge":1,"sound":"default"}}`)
+
+	notification.Payload = []byte(`{"aps":{"alert":{"title":"Judul Notifikasi","body":"Isi Notifikasi"},"category":"kategory_notifikasi","badge":1,"sound":"default","content-available":1},"custom_key":"custom_value"}`)
 
 	client := apns2.NewTokenClient(token)
 	res, err := client.Push(notification)
